@@ -1,7 +1,9 @@
 # tbbleak
 Demonstration of Intel TBB leak during std::sort(std::execution::par_unseq
 
-from clean install of ubuntu 24.04 do the following:
+The bug report is here: https://github.com/oneapi-src/oneTBB/issues/1533
+
+To reproduce, from clean install of ubuntu 24.04, do the following:
 
 ```bash
 
