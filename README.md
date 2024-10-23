@@ -33,7 +33,7 @@ to see the exact compiler command run `./build.sh --verbose clean` which gives:
 sudo apt remove libtbb-dev   # remove the tbb from ubuntu packages to avoid confusion
 sudo apt autoremove          # cleanup related packages
 
-git clone git@github.com:oneapi-src/oneTBB.git
+git clone https://github.com/oneapi-src/oneTBB.git
 cmake -DCMAKE_BUILD_TYPE=Release -B build -S .
 cd oneTBB/
 cmake -DCMAKE_BUILD_TYPE=Release -DTBB_TEST=OFF -B build -S .
