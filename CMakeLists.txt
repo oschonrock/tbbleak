@@ -18,6 +18,7 @@ else() # unix'ish
 endif()
 
 add_executable(sort_leak app/sort_leak.cpp)
+target_compile_features(sort_leak PRIVATE cxx_std_17)
 target_compile_options(sort_leak PRIVATE ${PROJECT_COMPILE_OPTIONS})
 target_link_libraries(sort_leak PRIVATE tbb)
 
