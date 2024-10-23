@@ -34,13 +34,11 @@ sudo apt remove libtbb-dev   # remove the tbb from ubuntu packages to avoid conf
 sudo apt autoremove          # cleanup related packages
 
 git clone https://github.com/oneapi-src/oneTBB.git
-cmake -DCMAKE_BUILD_TYPE=Release -B build -S .
 cd oneTBB/
 cmake -DCMAKE_BUILD_TYPE=Release -DTBB_TEST=OFF -B build -S .
 cmake --build build -- -j4
 sudo cmake --install build
 sudo ldconfig               # ensure the linker is aware of the newly installed lib
-
 
 # and now back to building and running normally as above
 
