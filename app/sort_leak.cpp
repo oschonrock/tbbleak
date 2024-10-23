@@ -31,6 +31,11 @@ std::pair<std::size_t, std::size_t> process_mem_usage() {
   return {vsize / 1024, rss * page_size_kb};
 }
 
+void report_memory_usage() {
+  auto [vm, rss] = process_mem_usage();
+  std::cout << "VM: " << std::setw(8) << vm << "   RSS: " << std::setw(8) << rss << " (kB)\n";
+}
+
 int main() {
   constexpr std::size_t size       = 1'000'000;
   constexpr int         maxval     = 1'000'000;
@@ -47,21 +52,15 @@ int main() {
 
   std::cout << "Single threaded sort:\n";
   for (std::size_t i = 0; i != iterations; i++) {
-    auto sorted_numbers = random_numbers; // make a copy
+    auto sorted_numbers = random_numbers;
     std::sort(sorted_numbers.begin(), sorted_numbers.end());
-    // report memory usage
-    auto [vm, rss] = process_mem_usage();
-    std::cout << "VM: " << std::setw(8) << vm << "   RSS: " << std::setw(8) << rss << " (kB)\n";
-    // allow the sorted copy to be destroyed
+    report_memory_usage();
   }
 
   std::cout << "\npar_unseq sort:\n";
   for (std::size_t i = 0; i != iterations; i++) {
-    auto sorted_numbers = random_numbers; // make a copy
+    auto sorted_numbers = random_numbers;
     std::sort(std::execution::par_unseq, sorted_numbers.begin(), sorted_numbers.end());
-    // report memory usage
-    auto [vm, rss] = process_mem_usage();
-    std::cout << "VM: " << std::setw(8) << vm << "   RSS: " << std::setw(8) << rss << " (kB)\n";
-    // allow the sorted copy to be destroyed
+    report_memory_usage();
   }
 }
