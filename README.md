@@ -44,7 +44,7 @@ sudo ldconfig               # ensure the linker is aware of the newly installed 
 # and now back to building and running normally as above
 
 cd ../tbbleak
-./build.sh
+./build.sh reset   # reset will remove the build dir and start again, so there is no doubt we have a clean compile
 ./build/gcc/relwithdebinfo/sort_leak
 
 # output is the same as below
