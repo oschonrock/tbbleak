@@ -27,6 +27,27 @@ to see the exact compiler command run `./build.sh --verbose clean` which gives:
 ...
 ```
 
+# Compiling with oneTBB master/HEAD
+
+```
+sudo apt remove libtbb-dev   # remove the tbb from ubuntu packages to avoid confusion
+sudo apt autoremove          # cleanup related packages
+
+git clone git@github.com:oneapi-src/oneTBB.git
+cmake -DCMAKE_BUILD_TYPE=Release -B build -S .
+cd oneTBB/
+cmake -DCMAKE_BUILD_TYPE=Release -DTBB_TEST=OFF -B build -S .
+cmake --build build -- -j4
+sudo cmake --install build
+
+# and now back to building and running normally
+
+cd ../tbbleak
+./build.sh
+./build/gcc/relwithdebinfo/sort_leak
+```
+
+
 # Code
 
 all code in is `app/sort_leak.cpp` 
