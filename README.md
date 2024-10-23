@@ -18,11 +18,11 @@ cd tbbleak
 
 all code in is `app/sort_leak.cpp` 
 
-`process_mem_usage()` is for reporting only
-all relevant code is in `main()`
-run-time lenth and size of leak can be easily adjusted with `size` and `iterations` constant at top of `main()`
-the reported mem usage has been cross checked with `top` (for a longer running process)
-kernel will process due to out of memory, if `size` and `iterations` are turned up too high
+- `process_mem_usage()` is for reporting only
+- all relevant code is in `main()`
+- run-time lenth and size of leak can be easily adjusted with `size` and `iterations` constant at top of `main()`
+- the reported mem usage has been cross checked with `top` (for a longer running process)
+- kernel will process due to out of memory, if `size` and `iterations` are turned up too high
 
 # Output:
 ```
