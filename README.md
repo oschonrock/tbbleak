@@ -83,5 +83,13 @@ VM:    37564   RSS:    24772 (kB)
 ```
 It can be clearly seen that single threadeed `std::sort` is not affected, but resident and virtual size is clearly growing with every call to `std::sort(par_unseq,...)` 
 
+# Solution
+
+TBB can't ifx it, the bug is in the glue code in libstdc++
+
+bug submitted on libstdc++
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117276
+
 
 
