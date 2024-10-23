@@ -25,7 +25,7 @@ std::pair<std::size_t, std::size_t> process_mem_usage() {
 
   stat_stream.close();
 
-  std::size_t page_size_kb = static_cast<std::size_t>(sysconf(_SC_PAGE_SIZE)) / 1024;
+  auto page_size_kb = static_cast<std::size_t>(sysconf(_SC_PAGE_SIZE)) / 1024;
 
   std::size_t vm_usage_kB     = vsize / 1024;
   std::size_t resident_set_kB = rss * page_size_kb;
