@@ -39,12 +39,20 @@ cd oneTBB/
 cmake -DCMAKE_BUILD_TYPE=Release -DTBB_TEST=OFF -B build -S .
 cmake --build build -- -j4
 sudo cmake --install build
+sudo ldconfig               # ensure the linker is aware of the newly installed lib
 
-# and now back to building and running normally
+
+# and now back to building and running normally as above
 
 cd ../tbbleak
 ./build.sh
 ./build/gcc/relwithdebinfo/sort_leak
+
+# output is the same as below
+
+# to uninstall the manually compiled tbblib do the following
+sudo xargs rm < ~/oneTBB/build/install_manifest.txt
+
 ```
 
 
