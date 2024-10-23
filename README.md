@@ -7,7 +7,7 @@ To reproduce, from clean install of ubuntu 24.04, do the following:
 
 ```bash
 
-sudo apt install build-essential git
+sudo apt install build-essential git cmake
 sudo apt install libtbb-dev  # see below for building with latest libtbb
 
 cd
