@@ -7,6 +7,7 @@
 #include <random>
 #include <unistd.h>
 
+// returns virtual and resident memory of current process in kB
 std::pair<std::size_t, std::size_t> process_mem_usage() {
   std::ifstream stat_stream("/proc/self/stat", std::ios_base::in);
 
@@ -27,9 +28,7 @@ std::pair<std::size_t, std::size_t> process_mem_usage() {
 
   auto page_size_kb = static_cast<std::size_t>(sysconf(_SC_PAGE_SIZE)) / 1024;
 
-  std::size_t vm_usage_kB     = vsize / 1024;
-  std::size_t resident_set_kB = rss * page_size_kb;
-  return {vm_usage_kB, resident_set_kB};
+  return {vsize / 1024, rss * page_size_kb};
 }
 
 int main() {
