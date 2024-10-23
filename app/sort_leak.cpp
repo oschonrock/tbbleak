@@ -1,15 +1,11 @@
+#include "memusage.hpp"
 #include <algorithm>
 #include <cstddef>
 #include <execution>
 #include <iostream>
 #include <random>
-#include "memusage.hpp"
 
-int main() {
-  constexpr std::size_t size       = 1'000'000;
-  constexpr int         maxval     = 1'000'000;
-  constexpr std::size_t iterations = 5;
-
+std::vector<int> make_random_numbers(std::size_t size, int maxval) {
   std::mt19937                       generator{std::random_device{}()};
   std::uniform_int_distribution<int> distribution{0, maxval};
 
@@ -18,6 +14,15 @@ int main() {
   for (std::size_t i = 0; i != size; i++) {
     random_numbers.push_back(distribution(generator));
   }
+  return random_numbers;
+}
+
+int main() {
+  constexpr std::size_t size       = 1'000'000;
+  constexpr int         maxval     = 1'000'000;
+  constexpr std::size_t iterations = 5;
+
+  auto random_numbers = make_random_numbers(size, maxval);
 
   std::cout << "Single threaded sort:\n";
   for (std::size_t i = 0; i != iterations; i++) {
